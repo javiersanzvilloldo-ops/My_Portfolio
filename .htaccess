@@ -1,0 +1,6 @@
+<FilesMatch "\.css$">
+    Header set Content-Type "text/css; charset=utf-8"
+</FilesMatch>
+<FilesMatch "\.png$">
+    Header set Content-Type "image/png"
+</FilesMatch>
