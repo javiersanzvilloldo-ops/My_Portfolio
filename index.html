@@ -6,50 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javier Sanz - Desarrollador Full Stack</title>
     <style type="text/css">
+/* Reset y Variables Básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
-            --color-white: rgba(255, 255, 255, 1);
-            --color-black: rgba(0, 0, 0, 1);
-            --color-cream-50: rgba(252, 252, 249, 1);
-            --color-cream-100: rgba(255, 255, 253, 1);
-            --color-gray-200: rgba(245, 245, 245, 1);
-            --color-gray-300: rgba(167, 169, 169, 1);
-            --color-gray-400: rgba(119, 124, 124, 1);
-            --color-slate-500: rgba(98, 108, 113, 1);
-            --color-slate-900: rgba(19, 52, 59, 1);
-            --color-teal-500: rgba(33, 128, 141, 1);
-            --color-teal-600: rgba(29, 116, 128, 1);
-            --color-teal-300: rgba(50, 184, 198, 1);
+    --color-primary: #2180a8;
+    --color-teal-300: #32b8c6;
+    --color-background: #1f2121;
+    --color-surface: #262828;
+    --color-text: #f5f5f5;
+    --color-text-secondary: #a7a9a9;
+    --color-border: #77 7c7c4d;
+    --focus-ring: 0 0 0 3px rgba(33, 128, 141, 0.4);
+    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-            --focus-ring: 0 0 0 3px rgba(33, 128, 141, 0.4);
-            --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --font-family-mono: 'Courier New', monospace;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --color-background: rgba(31, 33, 33, 1);
-                --color-surface: rgba(38, 40, 40, 1);
-                --color-text: rgba(245, 245, 245, 1);
-                --color-text-secondary: rgba(167, 169, 169, 0.7);
-                --color-primary: rgba(50, 184, 198, 1);
-                --color-border: rgba(119, 124, 124, 0.3);
-            }
-        }
-
-        [data-color-scheme="light"] {
-            --color-background: rgba(252, 252, 249, 1);
-            --color-surface: rgba(255, 255, 253, 1);
-            --color-text: rgba(19, 52, 59, 1);
-            --color-text-secondary: rgba(98, 108, 113, 1);
-            --color-primary: rgba(33, 128, 141, 1);
-            --color-border: rgba(94, 82, 64, 0.2);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+@supports (--css: variables) {
 
         body {
             font-family: var(--font-family-base);
@@ -452,6 +428,7 @@
         .section:nth-child(3) {
             animation-delay: 0.2s;
         }
+    }
     </style>
 </head>
 <body>
