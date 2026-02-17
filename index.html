@@ -1,625 +1,723 @@
 <!DOCTYPE html>
 <!-- v3.0 - CSS fix iOS -->
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javier Sanz - Desarrollador Full Stack</title>
-    <style type="text/css">
-/* Reset y Variables Básicas */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-:root {
-    --color-primary: #2180a8;
-    --color-teal-300: #32b8c6;
-    --color-background: #1f2121;
-    --color-surface: #262828;
-    --color-text: #f5f5f5;
-    --color-text-secondary: #a7a9a9;
-    --color-border: #77 7c7c4d;
-    --focus-ring: 0 0 0 3px rgba(33, 128, 141, 0.4);
-    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-@supports (--css: variables) {
-
-        body {
-            font-family: var(--font-family-base);
-            background-color: var(--color-background);
-            color: var(--color-text);
-            line-height: 1.6;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, rgba(33, 128, 141, 0.8) 100%);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-        }
-
-        /* Hero Section */
-        .foto-img{
-          width: 200px;
-          height: 200px;
-          object-fit: cover;
-          border-radius: 30px;
-          margin-top: 7rem;
-        }
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-teal-300));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .tagline {
-            font-size: 1.5rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            gap: 0.5rem;
-            align-items: center;
-            background: var(--color-primary);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(33, 128, 141, 0.3);
-        }
-
-        .cta-button:hover {
-            background: var(--color-teal-600);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(33, 128, 141, 0.4);
-        }
-
-        .cta-button:focus-visible {
-            outline: var(--focus-ring);
-        }
-
-        /* Section Styling */
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--color-primary);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .skill-item {
-            background: var(--color-surface);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            border-color: var(--color-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(33, 128, 141, 0.2);
-        }
-
-        .skill-item strong {
-            color: var(--color-primary);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>Javier Sanz - Desarrollador Full Stack</title>
+        <style type="text/css">
+            /* Reset y Variables Básicas */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            :root {
+                --color-primary: #2180a8;
+                --color-teal-300: #32b8c6;
+                --color-background: #1f2121;
+                --color-surface: #262828;
+                --color-text: #f5f5f5;
+                --color-text-secondary: #a7a9a9;
+                --color-border: #77 7c7c4d;
+                --focus-ring: 0 0 0 3px rgba(33, 128, 141, 0.4);
+                --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
+            @supports (--css: variables) {
+                body {
+                    font-family: var(--font-family-base);
+                    background-color: var(--color-background);
+                    color: var(--color-text);
+                    line-height: 1.6;
+                    transition: background-color 0.3s ease;
+                }
+
+                /* Header & Navigation */
+                header {
+                    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(33, 128, 141, 0.8) 100%);
+                    padding: 1rem 0;
+                    position: sticky;
+                    top: 0;
+                    z-index: 100;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                }
+
+                .column {
+                    display: flex;
+                }
+
+                nav {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 2rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .logo {
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    color: white;
+                    text-decoration: none;
+                    transition: opacity 0.3s ease;
+                }
+
+                .logo:hover {
+                    opacity: 0.8;
+                }
+
+                .nav-links {
+                    display: flex;
+                    gap: 2rem;
+                    list-style: none;
+                }
+
+                .nav-links a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: opacity 0.3s ease;
+                }
+
+                .nav-links a:hover {
+                    opacity: 0.7;
+                }
+
+                @media (max-width: 768px) {
+                    .nav-links {
+                        flex-direction: column;
+                        gap: 1rem;
+                        padding: 1rem;
+                    }
+                }
+
+                /* Hero Section */
+                .foto-img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 30px;
+                    margin-top: 0;
+                    flex-shrink: 0;
+                }
+
+                .hero {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 5rem 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 2rem;
+                }
+
+                .hero-content {
+                    display: flex;
+                    align-items: center;
+                    gap: 3rem;
+                    width: 100%;
+                }
+
+                .hero h1 {
+                    font-size: 3.5rem;
+                    margin-bottom: 1rem;
+                    background: linear-gradient(135deg, var(--color-primary), var(--color-teal-300));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    text-align: left;
+                }
+
+                .hero .tagline {
+                    font-size: 1.5rem;
+                    color: var(--color-text-secondary);
+                    margin-bottom: 0;
+                    text-align: left;
+                }
+
+                .hero-text {
+                    flex: 1;
+                }
+
+                .column {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    flex: 1;
+                }
+
+                .cta-button {
+                    display: inline-flex;
+                    gap: 0.5rem;
+                    align-items: center;
+                    background: var(--color-primary);
+                    color: white;
+                    padding: 1rem 2rem;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(33, 128, 141, 0.3);
+                }
+
+                .cta-button:hover {
+                    background: var(--color-teal-600);
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(33, 128, 141, 0.4);
+                }
+
+                .cta-button:focus-visible {
+                    outline: var(--focus-ring);
+                }
+
+                /* Section Styling */
+                .section {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 2rem 2rem;
+                    border-bottom: 1px solid var(--color-border);
+                }
+
+                .section h2 {
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                    color: var(--color-primary);
+                }
+
+                /* About Section */
+                .about-content {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 3rem;
+                    align-items: center;
+                }
+
+                .about-text h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                    color: var(--color-text);
+                }
+
+                .about-text p {
+                    margin-bottom: 1rem;
+                    color: var(--color-text-secondary);
+                    line-height: 1.8;
+                }
+
+                .skills-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 1.5rem;
+                }
+
+                .skill-item {
+                    background: var(--color-surface);
+                    padding: 1.5rem;
+                    border-radius: 8px;
+                    border: 1px solid var(--color-border);
+                    transition: all 0.3s ease;
+                }
+
+                .skill-item:hover {
+                    border-color: var(--color-primary);
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(33, 128, 141, 0.2);
+                }
+
+                .skill-item strong {
+                    color: var(--color-primary);
+                    display: block;
+                    margin-bottom: 0.5rem;
+                }
+
+                @media (max-width: 768px) {
+                    .about-content {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .hero h1 {
+                        font-size: 2.5rem;
+                    }
+
+                    .hero-content {
+                        flex-direction: column;
+                    }
+
+                    .skills-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                /* Projects Section */
+                .projects-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2rem;
+                }
+
+                .project-card {
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-border);
+                    border-radius: 12px;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+
+                .project-card:hover {
+                    border-color: var(--color-primary);
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 30px rgba(33, 128, 141, 0.15);
+                }
+
+                .project-header {
+                    background: linear-gradient(135deg, rgba(33, 128, 141, 0.1), rgba(50, 184, 198, 0.1));
+                    padding: 2rem;
+                    border-bottom: 1px solid var(--color-border);
+                }
+
+                .project-header h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 0.5rem;
+                    color: var(--color-primary);
+                }
+
+                .project-tech {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+                }
+
+                .tech-tag {
+                    background: var(--color-primary);
+                    color: white;
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 20px;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                }
+
+                .project-body {
+                    padding: 2rem;
+                }
+
+                .project-body p {
+                    color: var(--color-text-secondary);
+                    margin-bottom: 1.5rem;
+                }
+
+                .project-links {
+                    display: flex;
+                    gap: 1rem;
+                }
+
+                .project-links a {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                }
+
+                .project-links a:hover {
+                    color: var(--color-teal-600);
+                    gap: 1rem;
+                }
+
+                @media (max-width: 768px) {
+                    .projects-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                /* Experience Section */
+                .experience-item {
+                    background: var(--color-surface);
+                    padding: 2rem;
+                    border-left: 4px solid var(--color-primary);
+                    border-radius: 8px;
+                    margin-bottom: 1.5rem;
+                    transition: all 0.3s ease;
+                }
+
+                .experience-item:hover {
+                    box-shadow: 0 4px 15px rgba(33, 128, 141, 0.15);
+                    transform: translateX(5px);
+                }
+
+                .experience-item h3 {
+                    color: var(--color-primary);
+                    margin-bottom: 0.3rem;
+                }
+
+                .experience-item .period {
+                    color: var(--color-text-secondary);
+                    font-size: 0.9rem;
+                    margin-bottom: 1rem;
+                }
+
+                .experience-item ul {
+                    margin-left: 1.5rem;
+                    color: var(--color-text-secondary);
+                }
+
+                .experience-item li {
+                    margin-bottom: 0.5rem;
+                }
+
+                /* Contact Section */
+                .contact-content {
+                    text-align: center;
+                    max-width: 600px;
+                    margin: 0 auto;
+                }
+
+                .contact-content p {
+                    font-size: 1.1rem;
+                    margin-bottom: 2rem;
+                    color: var(--color-text-secondary);
+                }
+
+                .social-links {
+                    display: flex;
+                    justify-content: center;
+                    gap: 2rem;
+                    margin-top: 2rem;
+                }
+
+                .social-links a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 50px;
+                    height: 50px;
+                    background: var(--color-surface);
+                    border: 2px solid var(--color-border);
+                    border-radius: 50%;
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                }
+
+                .social-links a:hover {
+                    background: var(--color-primary);
+                    color: white;
+                    border-color: var(--color-primary);
+                    transform: translateY(-3px);
+                }
+
+                /* Footer */
+                footer {
+                    text-align: center;
+                    padding: 2rem;
+                    background: var(--color-surface);
+                    border-top: 1px solid var(--color-border);
+                    color: var(--color-text-secondary);
+                }
+
+                /* Smooth Scroll Behavior */
+                html {
+                    scroll-behavior: smooth;
+                }
+
+                /* Loading Animation */
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .hero,
+                .section {
+                    animation: fadeInUp 0.8s ease-out forwards;
+                }
+
+                .section:nth-child(2) {
+                    animation-delay: 0.1s;
+                }
+
+                .section:nth-child(3) {
+                    animation-delay: 0.2s;
+                }
             }
-        }
+        </style>
+    </head>
 
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
+    <body>
+        <!-- Header-->
+        <header>
+            <nav>
+                <a
+                    href="#"
+                    class="logo"
+                >JS</a>
+                <ul class="nav-links">
+                    <li><a href="#about">Sobre mí</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#experience">Experiencia</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        .project-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--color-primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(33, 128, 141, 0.15);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, rgba(33, 128, 141, 0.1), rgba(50, 184, 198, 0.1));
-            padding: 2rem;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .project-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--color-primary);
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech-tag {
-            background: var(--color-primary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .project-body {
-            padding: 2rem;
-        }
-
-        .project-body p {
-            color: var(--color-text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .project-links a:hover {
-            color: var(--color-teal-600);
-            gap: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Experience Section */
-        .experience-item {
-            background: var(--color-surface);
-            padding: 2rem;
-            border-left: 4px solid var(--color-primary);
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            box-shadow: 0 4px 15px rgba(33, 128, 141, 0.15);
-            transform: translateX(5px);
-        }
-
-        .experience-item h3 {
-            color: var(--color-primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-item .period {
-            color: var(--color-text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .experience-item ul {
-            margin-left: 1.5rem;
-            color: var(--color-text-secondary);
-        }
-
-        .experience-item li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: var(--color-text-secondary);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: var(--color-surface);
-            border: 2px solid var(--color-border);
-            border-radius: 50%;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: var(--color-surface);
-            border-top: 1px solid var(--color-border);
-            color: var(--color-text-secondary);
-        }
-
-        /* Smooth Scroll Behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero, .section {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .section:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .section:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-    }
-    </style>
-</head>
-<body>
-    <!-- Header-->
-    <header>
-        <nav>
-            <a href="#" class="logo">JS</a>
-            <ul class="nav-links">
-                <li><a href="#about">Sobre mí</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#experience">Experiencia</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Section 1 -->
-    <section class="hero">
-        <h1>Javier Sanz</h1>
-        <p class="tagline">Desarrollador Full Stack</p>
-        <p>Soy un desarrollador Full Stack con sólida formación en <strong>JavaScript, React, Node.js y MySQL</strong>. Me considero una persona trabajadora, resolutiva, eficiente y responsable, con experiencia en trabajo en equipo, liderazgo y orientación a resultados. Apasionado por la música y la tecnología</p>
-        <a href="#contact" class="cta-button">Contáctame →</a>
-        <div>
-          <img class="foto-img" src="assets/img/fotolinkedin.png" alt="">
-        </div>
-    </section>
-
-    <!-- Section About-->
-    <section class="section" id="about">
+        <!-- Section 1 -->
+        <section class="hero">
+            <div class="hero-content">
+                <img
+                class="foto-img"
+                src="assets/img/fotolinkedin.png"
+                alt="Javier Sanz"
+                >
+                <div class="hero-text">
+                    <h1>Javier Sanz</h1>
+                    <p class="tagline">Desarrollador Full Stack</p>
+                </div>
+                <div class="column">
+                    <div>
+                        <h3>Habilidades técnicas</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <strong>Frontend</strong>
+                                React, HTML5, CSS3, JavaScript ES6+
+                            </div>
+                            <div class="skill-item">
+                                <strong>Backend</strong>
+                                Node.js, Express, APIs RESTful
+                            </div>
+                            <div class="skill-item">
+                                <strong>Bases de Datos</strong>
+                                MySQL, Diseño relacional
+                            </div>
+                            <div class="skill-item">
+                                <strong>Herramientas</strong>
+                                Git, GitHub, VS Code, Postman, Figma
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a
+            href="#contact"
+            class="cta-button"
+            >Contáctame →</a>
+        </section>
+        
+        <!-- Section About-->
+        <section
+        class="section"
+        id="about"
+        >
         <h2>Sobre mí</h2>
         <div class="about-content">
-            <div class="about-text">
-                <h3>Apasionado por el desarrollo web</h3>
-                <p>Soy un desarrollador full stack con experiencia que incluye desarrollo con tecnologías modernas y la capacidad de trabajar tanto en frontend como en backend.</p>
-                <p>He trabajado en proyectos complejos donde apliqué mis conocimientos de arquitectura de aplicaciones, gestión de bases de datos y diseño responsivo. Mi objetivo es aportar valor con mis conocimientos en desarrollo full stack mientras continúo mejorando mis habilidades técnicas y aprendiendo nuevas tecnologías.</p>
-                <p><strong>Ubicación:</strong> Alicante, Comunidad Valenciana, España</p>
-            </div>
             <div>
-                <h3>Habilidades técnicas</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <strong>Frontend</strong>
-                        React, HTML5, CSS3, JavaScript ES6+
+                <p>Soy un desarrollador Full Stack con sólida formación en <strong>JavaScript, React, Node.js y MySQL</strong>. Me caracterizo por ser una persona trabajadora, resolutiva y orientada a resultados, con experiencia en trabajo en equipo y liderazgo.</p>
+                <p>He trabajado en proyectos complejos implementando soluciones full-stack, desde la arquitectura de aplicaciones hasta la gestión de bases de datos y diseño responsivo. Mi pasión es crear aplicaciones web escalables y eficientes, combinando buenas prácticas de desarrollo con atención al detalle.</p>
+            </div>
+            <div class="about-text">
+                <h3>Mi enfoque profesional</h3>
+                    <p>Busco aportar valor mediante soluciones técnicas sólidas y código de calidad. Estoy comprometido con el aprendizaje continuo para dominar nuevas tecnologías y metodologías de desarrollo.</p>
+                    <p>Fuera del código, soy apasionado por la música y disfruto colaborando en equipos multidisciplinarios para lograr objetivos comunes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Proyectos -->
+        <section
+            class="section"
+            id="projects"
+        >
+            <h2>Proyectos Destacados</h2>
+            <div class="projects-grid">
+                <!-- Proyecto Instagame -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Instagame</h3>
+                        <p
+                            style="color: var(--color-text-secondary); margin: 0; font-size: 0.95rem;">
+                            Red Social para Gamers</p>
                     </div>
-                    <div class="skill-item">
-                        <strong>Backend</strong>
-                        Node.js, Express, APIs RESTful
+                    <div class="project-body">
+                        <p>Plataforma de red social que permite a gamers
+                            compartir su pasión por los videojuegos. Usuarios
+                            pueden crear posts, interactuar con otros jugadores
+                            y descubrir contenido relevante de su comunidad.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <strong>Bases de Datos</strong>
-                        MySQL, Diseño relacional
+                </div>
+
+                <!-- Proyecto Bruver -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Proyecto Brüver</h3>
+                        <p
+                            style="color: var(--color-text-secondary); margin: 0; font-size: 0.95rem;">
+                            Peluquería canina</p>
                     </div>
-                    <div class="skill-item">
-                        <strong>Herramientas</strong>
-                        Git, GitHub, VS Code, Postman
+                    <div class="project-body">
+                        <p>Aplicación React para Bruver Peluquería Canina que
+                            consume API propia full-stack. Demuestra habilidades
+                            en desarrollo frontend/backend, autenticación JWT,
+                            manejo de estado, diseño responsivo con
+                            búsqueda/filtrado de citas, calendario y gestión de
+                            clientes</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Agile</span>
+                            <span class="tech-tag">SCRUM</span>
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Section Proyectos -->
-    <section class="section" id="projects">
-        <h2>Proyectos Destacados</h2>
-        <div class="projects-grid">
-            <!-- Proyecto Instagame -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Instagame</h3>
-                    <p style="color: var(--color-text-secondary); margin: 0; font-size: 0.95rem;">Red Social para Gamers</p>
-                </div>
-                <div class="project-body">
-                    <p>Plataforma de red social que permite a gamers compartir su pasión por los videojuegos. Usuarios pueden crear posts, interactuar con otros jugadores y descubrir contenido relevante de su comunidad.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Express</span>
-                    </div>
-                </div>
+        <!-- Section Experience -->
+        <section
+            class="section"
+            id="experience"
+        >
+            <h2>Formación y Experiencia</h2>
+
+            <div class="experience-item">
+                <h3>Proyecto Brüver</h3>
+                <p class="period">Brüver · Nov 2025 - Actualidad</p>
+                <ul>
+                    <li>Aplicación completa con JavaScript, React, Node.js y
+                        MySQL</li>
+                    <li>Metodología SCRUM y Agile</li>
+                    <li>Colaboración en equipo y manejo de repositorios Git</li>
+                    <li>Autenticación JWT</li>
+                    <li>Manejos de estado</li>
+                    <li>Reuniones con empresarios para requisitos MVP</li>
+                    <li>Diseño responsive con búsqueda/filtrado de citas,
+                        calendario y gestión de clientes</li>
+                </ul>
             </div>
 
-            <!-- Proyecto Bruver -->
-              <div class="project-card">
-                <div class="project-header">
-                    <h3>Proyecto Brüver</h3>
-                    <p style="color: var(--color-text-secondary); margin: 0; font-size: 0.95rem;">Peluquería canina</p>
-                </div>
-                <div class="project-body">
-                    <p>Aplicación React para Bruver Peluquería Canina que consume API propia full-stack. Demuestra habilidades en desarrollo frontend/backend, autenticación JWT, manejo de estado, diseño responsivo con búsqueda/filtrado de citas, calendario y gestión de clientes</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">Agile</span>
-                        <span class="tech-tag">SCRUM</span>
-                    </div>
+            <div class="experience-item">
+                <h3>Bootcamp Full Stack Web Developer</h3>
+                <p class="period">Socratech · Sep 2025 - Feb 2026</p>
+                <ul>
+                    <li>Formación intensiva en JavaScript, React, Node.js y
+                        MySQL</li>
+                    <li>Desarrollo de proyectos reales con metodologías ágiles
+                    </li>
+                    <li>Colaboración en equipo y manejo de repositorios Git</li>
+                    <li>Certificado: Full Stack Web Developer</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Gerente "A" Sección Listos para Comer</h3>
+                <p class="period">Mercadona S.A · Feb 2020 - Oct 2024</p>
+                <ul>
+                    <li>Control de pedidos y stock, manejo de inventarios</li>
+                    <li>Control de calidad y atención al cliente</li>
+                    <li>Gestión de caja y coordinación de equipos</li>
+                    <li>Trabajo orientado a eficiencia y resultados</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Gerente de operaciones</h3>
+                <p class="period">Padthaiwok · Feb 2018 - Ene 2020</p>
+                <ul>
+                    <li>Organización de horarios y turnos</li>
+                    <li>Supervisión, formación y contratación de personal</li>
+                    <li>Control de efectivo e ingresos</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Encargado de turno</h3>
+                <p class="period">Mcdonald´s · Ene 2011 - Ene 2018</p>
+                <ul>
+                    <li>Gestión de horarios, inventarios y pedidos semanales
+                    </li>
+                    <li>Análisis de métodos de trabajo</li>
+                    <li>Realización de aperturas y cierres</li>
+                    <li>Elaboración de planes de trabajo, asegurando Calidad,
+                        Servicio y Limpieza</li>
+                    <li>Supervisión, formación y contratación de personal</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Educación Superior</h3>
+                <p class="period">Conservatorio Superior de Música</p>
+                <ul>
+                    <li>Grado Medio de Música (especialidad Piano)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section Contacto -->
+        <section
+            class="section"
+            id="contact"
+        >
+            <h2>Contáctame</h2>
+            <div class="contact-content">
+                <p>¿Interesado en trabajar conmigo? Me encantaría hablar sobre
+                    nuevas oportunidades, proyectos colaborativos o simplemente
+                    conectar.</p>
+                <div class="social-links">
+                    <a
+                        href="mailto:javiersanzvilloldo@gmail.com"
+                        title="Email"
+                    >✉️</a>
+                    <a
+                        href="https://linkedin.com/in/javier-sanz-villoldo"
+                        target="_blank"
+                        rel="noopener"
+                        title="LinkedIn"
+                    >in</a>
+                    <a
+                        href="https://github.com/javiersanzvilloldo-ops"
+                        target="_blank"
+                        rel="noopener"
+                        title="GitHub"
+                        style="display: inline-flex; align-items: center; justify-content: center;"
+                    ><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Section Experience -->
-    <section class="section" id="experience">
-        <h2>Formación y Experiencia</h2>
-        
-        <div class="experience-item">
-            <h3>Proyecto Brüver</h3>
-            <p class="period">Brüver · Oct 2025 - Actualidad</p>
-            <ul>
-                <li>Aplicación completa con JavaScript, React, Node.js y MySQL</li>
-                <li>Metodología SCRUM y Agile</li>
-                <li>Colaboración en equipo y manejo de repositorios Git</li>
-                <li>Autenticación JWT</li>
-                <li>Manejos de estado</li>
-                <li>Reuniones con empresarios para requisitos MVP</li>
-                <li>Diseño responsive con búsqueda/filtrado de citas, calendario y gestión de clientes</li>
-            </ul>
-        </div>
-                
-        <div class="experience-item">
-            <h3>Bootcamp Full Stack Web Developer</h3>
-            <p class="period">Socratech · Sep 2025 - Feb 2026</p>
-            <ul>
-                <li>Formación intensiva en JavaScript, React, Node.js y MySQL</li>
-                <li>Desarrollo de proyectos reales con metodologías ágiles</li>
-                <li>Colaboración en equipo y manejo de repositorios Git</li>
-                <li>Certificado: Full Stack Web Developer</li>
-            </ul>
-        </div>
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Javier Sanz. Desarrollador Full Stack </p>
+        </footer>
+    </body>
 
-        <div class="experience-item">
-            <h3>Gerente "A" Sección Listos para Comer</h3>
-            <p class="period">Mercadona S.A · Feb 2020 - Oct 2024</p>
-            <ul>
-                <li>Control de pedidos y stock, manejo de inventarios</li>
-                <li>Control de calidad y atención al cliente</li>
-                <li>Gestión de caja y coordinación de equipos</li>
-                <li>Trabajo orientado a eficiencia y resultados</li>
-            </ul>
-        </div>
-
-        <div class="experience-item">
-            <h3>Gerente de operaciones</h3>
-            <p class="period">Padthaiwok · Feb 2018 - Ene 2020</p>
-            <ul>
-                <li>Organización de horarios y turnos</li>
-                <li>Supervisión, formación y contratación de personal</li>
-                <li>Control de efectivo e ingresos</li>
-            </ul>
-        </div>
-
-        <div class="experience-item">
-            <h3>Encargado de turno</h3>
-            <p class="period">Mcdonald´s · Ene 2011 - Ene 2018</p>
-            <ul>
-                <li>Gestión de horarios, inventarios y pedidos semanales</li>
-                <li>Análisis de métodos de trabajo</li>
-                <li>Realización de aperturas y cierres</li>
-                <li>Elaboración de planes de trabajo, asegurando Calidad, 
-                  Servicio y Limpieza</li>
-                <li>Supervisión, formación y contratación de personal</li>
-            </ul>
-        </div>
-
-        <div class="experience-item">
-            <h3>Educación Secundaria</h3>
-            <p class="period">Conservatorio Superior de Música</p>
-            <ul>
-                <li>Grado Medio de Música (especialidad Piano)</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Section Contacto -->
-    <section class="section" id="contact">
-        <h2>Contáctame</h2>
-        <div class="contact-content">
-            <p>¿Interesado en trabajar conmigo? Me encantaría hablar sobre nuevas oportunidades, proyectos colaborativos o simplemente conectar.</p>
-            <div class="social-links">
-                <a href="mailto:javiersanzvilloldo@gmail.com" title="Email">✉️</a>
-                <a href="https://linkedin.com/in/javier-sanz-villoldo" target="_blank" rel="noopener" title="LinkedIn">in</a>
-                <a href="https://github.com/javiersanzvilloldo-ops" target="_blank" rel="noopener" title="GitHub">⚙️</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Javier Sanz. Desarrollador Full Stack | Alicante, ES</p>
-    </footer>
-</body>
 </html>
